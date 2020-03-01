@@ -1,0 +1,19 @@
+#!/bin/bash
+if [ -f "anu.txt" ];
+then
+rm -rf anu.txt
+fi
+for output in $(cd /home/eip|ls)
+do
+cat $output | grep -i "neha"| grep -v ".sh"
+#echo $output
+if [ $? == 0 ]
+then
+echo $output >> anu.txt
+fi
+done
+while read line
+do
+echo $line
+sed -i "s/neha/anushka/g" $line
+done < anu.txt
